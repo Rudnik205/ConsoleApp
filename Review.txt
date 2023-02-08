@@ -1,0 +1,24 @@
+Numery odpowiadają komentarzom w kodzie.
+
+1. Poprawiłem błędną nazwę pliku z danymi.
+2. Zmiana z IEnumerable na List - i tak dalej używamy List i wtedy nie będzie trzeba robić rzutowania w celu użycia metody Add.
+3. Przy inicjalizacji ImportedObjects usunąłem niepotrzebne dodanie obiektu na początku - { new ImportedObject() }.
+4. W pętli iterującej po importedLines zamieniłem pętlę for na foreach - jest prostrzy zapis + w poprzedniej wersji był błąd i było <= a powinno być <
+    i było przekroczenie zakresu.
+5. Dodałem zabezpieczenie przed pustą linią w pliku.
+6. Przy pobieraniu wartości z linii trzeba sprawdzać czy mamy dostateczną ilość wartości, bo nie wszystkie linie zawierają pełne dane.
+7. Zabezpieczenie przed null.
+8. Pętla foreach zamiast for.
+9. Zamiast zagnieżdżonej pętli zliczanie NumberOfChildren za pomocą LINQ - jedna linia zamiast dziesięciu
+    + był w tej pętli niepotrzebnie skomplikowany zapis: importedObject.NumberOfChildren = 1 + importedObject.NumberOfChildren;
+    można było go zastąpić importedObject.NumberOfChildren += 1;
+10. Wykorzystanie stałej gdy sprawdzamy czy typ jest równy "DATABASE". Gdyby kiedyś ten tekst był wykorzystywany w większej ilości miejsc i gdyby się zmienił
+    wtedy wystarczy zmiana w jednym miejscu.
+11. Uprościłem wypisywanie na ekran za pomocą LINQ. Wcześniej to było długie i niepotrzebnie skomplikowane. If'y były zagnieżdżone kiedy można było to samo
+    zapisać w jednym z użyciem &&. Dodatkowo zrobiłem zabezpieczenie przed nullami przy ToUpper().
+12. W klasie ImportedObject usunąłem właściwość Name, ponieważ jest już ona odziedziczona z klasy nadrzędnej i nie ma sensu, aby była drugi raz.
+13. Ujednoliciłem, aby wszystkie elementy były właściwościami.
+14. Ujednoliciłem, aby wszystkie właściwości były zapisane w jednej linii: { get; set; }, ponieważ powinno się stosować w kodzie jeden standard formatowania,
+    a nie za każdym razem inaczej, bo to zmniejsza czytelność.
+15. NumberOfChildren - zmieniłem tym z double na int, ponieważ liczba dzieci jest zawsze całkowita.
+16. IsNullable - zmieniłem typ ze string na bool.
